@@ -16,6 +16,7 @@
 		438261041C5C3E5F00D3DBCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 438261021C5C3E5F00D3DBCA /* LaunchScreen.storyboard */; };
 		4382610F1C5C3E5F00D3DBCA /* GameJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382610E1C5C3E5F00D3DBCA /* GameJamTests.swift */; };
 		4382611A1C5C3E5F00D3DBCA /* GameJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438261191C5C3E5F00D3DBCA /* GameJamUITests.swift */; };
+		438261281C5C435100D3DBCA /* BlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438261271C5C435100D3DBCA /* BlockNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		438261151C5C3E5F00D3DBCA /* GameJamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameJamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		438261191C5C3E5F00D3DBCA /* GameJamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameJamUITests.swift; sourceTree = "<group>"; };
 		4382611B1C5C3E5F00D3DBCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		438261271C5C435100D3DBCA /* BlockNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				438260F51C5C3E5F00D3DBCA /* AppDelegate.swift */,
 				438260F71C5C3E5F00D3DBCA /* GameScene.sks */,
 				438260F91C5C3E5F00D3DBCA /* GameScene.swift */,
+				438261271C5C435100D3DBCA /* BlockNode.swift */,
 				438260FB1C5C3E5F00D3DBCA /* GameViewController.swift */,
 				438260FD1C5C3E5F00D3DBCA /* Main.storyboard */,
 				438261001C5C3E5F00D3DBCA /* Assets.xcassets */,
@@ -199,6 +202,7 @@
 				TargetAttributes = {
 					438260F11C5C3E5E00D3DBCA = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4A6Y3LCD29;
 					};
 					438261091C5C3E5F00D3DBCA = {
 						CreatedOnToolsVersion = 7.3;
@@ -266,6 +270,7 @@
 				438260FA1C5C3E5F00D3DBCA /* GameScene.swift in Sources */,
 				438260FC1C5C3E5F00D3DBCA /* GameViewController.swift in Sources */,
 				438260F61C5C3E5F00D3DBCA /* AppDelegate.swift in Sources */,
+				438261281C5C435100D3DBCA /* BlockNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GameJam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codedezyn.GameJam;
@@ -418,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = GameJam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codedezyn.GameJam;
