@@ -40,6 +40,12 @@ class EndOfGameVC: UIViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        playLoseGame()
+    }
+    
     /// Forever hover animation
     func floatCherubs() {
         
@@ -51,6 +57,9 @@ class EndOfGameVC: UIViewController {
     }
     
     @IBAction func backButton(sender: AnyObject) {
+        
+        playButtonPress()
+        
         performSegueWithIdentifier("backToGame", sender: nil)
     }
 }

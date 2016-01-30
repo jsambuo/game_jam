@@ -104,6 +104,8 @@ class CannonNode: SKSpriteNode {
                 return
         }
         
+        playCannonLoad()
+        
         ammoNode.hidden = true
         
         ammoNode.removeAllActions()

@@ -135,6 +135,8 @@ class PlayerNode: SKSpriteNode {
     /// For when player is launched
     func shootPlayer() {
         
+        playCannonFire()
+        
         cannonsShot = cannonsShot + 1
         
         // Update player image as needed
@@ -151,10 +153,14 @@ class PlayerNode: SKSpriteNode {
     /// For marriage cannon
     func marryPlayer() {
         
+        playRitualWedding()
+        
     }
     
     /// For make a baby
     func haveBaby() {
+        
+        playRitualBirth()
         
         liniage.append(associatedImage)
         curPlayer = Player.init()
