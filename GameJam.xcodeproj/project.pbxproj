@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		433FECE51C5D04F200A8AA48 /* CannonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FECE41C5D04F200A8AA48 /* CannonNode.swift */; };
 		438260F61C5C3E5F00D3DBCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438260F51C5C3E5F00D3DBCA /* AppDelegate.swift */; };
 		438260F81C5C3E5F00D3DBCA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 438260F71C5C3E5F00D3DBCA /* GameScene.sks */; };
 		438260FA1C5C3E5F00D3DBCA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438260F91C5C3E5F00D3DBCA /* GameScene.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		433FECE41C5D04F200A8AA48 /* CannonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannonNode.swift; sourceTree = "<group>"; };
 		438260F21C5C3E5E00D3DBCA /* GameJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438260F51C5C3E5F00D3DBCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		438260F71C5C3E5F00D3DBCA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				438260F51C5C3E5F00D3DBCA /* AppDelegate.swift */,
 				438260F71C5C3E5F00D3DBCA /* GameScene.sks */,
+				433FECE41C5D04F200A8AA48 /* CannonNode.swift */,
 				438260F91C5C3E5F00D3DBCA /* GameScene.swift */,
 				438260FB1C5C3E5F00D3DBCA /* GameViewController.swift */,
 				438260FD1C5C3E5F00D3DBCA /* Main.storyboard */,
@@ -266,6 +269,7 @@
 			files = (
 				438260FA1C5C3E5F00D3DBCA /* GameScene.swift in Sources */,
 				438260FC1C5C3E5F00D3DBCA /* GameViewController.swift in Sources */,
+				433FECE51C5D04F200A8AA48 /* CannonNode.swift in Sources */,
 				438260F61C5C3E5F00D3DBCA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,6 +501,7 @@
 				438261201C5C3E5F00D3DBCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		438261211C5C3E5F00D3DBCA /* Build configuration list for PBXNativeTarget "GameJamTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +510,7 @@
 				438261231C5C3E5F00D3DBCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		438261241C5C3E5F00D3DBCA /* Build configuration list for PBXNativeTarget "GameJamUITests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +519,7 @@
 				438261261C5C3E5F00D3DBCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
