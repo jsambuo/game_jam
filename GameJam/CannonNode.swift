@@ -19,7 +19,7 @@ class CannonNode: SKSpriteNode {
         let cannonTexture = SKTexture(imageNamed: "cannon")
         super.init(texture: nil, color: .clearColor(), size: size)
         
-        physicsBody = SKPhysicsBody(texture: cannonTexture, size: size)
+        physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 50, height: 100))
         physicsBody?.mass = 8
         physicsBody?.affectedByGravity = false
         physicsBody?.dynamic = true
@@ -79,12 +79,8 @@ class CannonNode: SKSpriteNode {
         self.parent?.addChild(ammoNode)
         
         ammoNode.shootPlayer()
-        
-        guard let texture = ammoNode.texture
-            else {
-                return
-        }
-        ammoNode.physicsBody = SKPhysicsBody(texture: texture, size: ammoNode.size)
+
+        ammoNode.physicsBody = SKPhysicsBody(rectangleOfSize: ammoNode.size)
         ammoNode.physicsBody?.dynamic = true
         ammoNode.physicsBody?.mass = ammoNode.curPlayer.mass.rawValue
         ammoNode.physicsBody?.categoryBitMask = CategoryType.Projectile.rawValue

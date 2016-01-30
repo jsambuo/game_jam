@@ -12,6 +12,7 @@ class GameScene: SKScene {
     
     var lastDropTime:CFTimeInterval? = nil
     var dropInterval = 1.3
+    let resetGameInterval = 8.0
     var backgroundVelocity : CGFloat = 1.0
     
     override func didMoveToView(view: SKView) {
@@ -33,6 +34,12 @@ class GameScene: SKScene {
         resetNode.position = CGPoint(x: 40, y: self.size.height - 40)
         resetNode.zPosition = 100
         addChild(resetNode)
+        
+        let scoreNode = SKLabelNode(text: "G: 1 Y: 1")
+        scoreNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 40)
+        scoreNode.zPosition = 100
+        scoreNode.name = "score"
+        addChild(scoreNode)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -78,7 +85,13 @@ class GameScene: SKScene {
             lastDropTime = currentTime
         }
         
-        if let playerNode = childNodeWithName("player") {
+        if let playerNode = childNodeWithName("player") as? PlayerNode {
+            
+            if let scoreNode = childNodeWithName("score") as? SKLabelNode {
+                let year = playerNode.curPlayer.curShotsInAge
+                scoreNode.text = "G: 1 Y: \(year)"
+            }
+            
             if playerNode.parent == self {
                 if playerNode.position.y < 0 {
                     resetGame()
@@ -120,16 +133,32 @@ class GameScene: SKScene {
 
 extension GameScene:SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
-        guard
-            let projectileNode = contact.bodyB.node as? PlayerNode,
-            let cannonNode = contact.bodyA.node as? CannonNode
-            else {
-            return
+        if contact.bodyA.categoryBitMask == CategoryType.Projectile.rawValue {
+            guard
+                let cannonNode = contact.bodyB.node as? CannonNode,
+                let projectileNode = contact.bodyA.node as? PlayerNode
+                else {
+                    return
+            }
+            
+            if (cannonNode.used == false) {
+                projectileNode.removeFromParent()
+                cannonNode.loadAmmo(projectileNode)
+            }
         }
         
-        if (cannonNode.used == false) {
-            projectileNode.removeFromParent()
-            cannonNode.loadAmmo(projectileNode)
+        if contact.bodyB.categoryBitMask == CategoryType.Projectile.rawValue {
+            guard
+                let cannonNode = contact.bodyA.node as? CannonNode,
+                let projectileNode = contact.bodyB.node as? PlayerNode
+                else {
+                    return
+            }
+            
+            if (cannonNode.used == false) {
+                projectileNode.removeFromParent()
+                cannonNode.loadAmmo(projectileNode)
+            }
         }
     }
 }
