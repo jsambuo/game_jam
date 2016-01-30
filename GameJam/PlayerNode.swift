@@ -12,7 +12,7 @@ import SpriteKit
 class PlayerNode: SKSpriteNode {
 
     var cannonsShot = 0
-    let SHOTS_PER_AGE = 3
+    let SHOTS_PER_AGE = 15
     
     init() {
         super.init(texture: nil, color: .clearColor(), size: CGSize(width: 40, height: 60))
@@ -97,7 +97,7 @@ class PlayerNode: SKSpriteNode {
         }
     }
     var curPlayer: Player = Player.init()
-    var liniage: [Player] = []
+    var liniage: [SKTexture] = []
     
     /// Get the player's new age image
     var associatedImage: SKTexture {
@@ -144,8 +144,8 @@ class PlayerNode: SKSpriteNode {
             curPlayer.age = curPlayer.age.next
             curPlayer.mass = curPlayer.mass.next
             self.texture = associatedImage
+            liniage.append(associatedImage)
         }
-        print(curPlayer.mass)
     }
     
     /// For marriage cannon
@@ -156,10 +156,9 @@ class PlayerNode: SKSpriteNode {
     /// For make a baby
     func haveBaby() {
         
-        liniage.append(curPlayer)
+        liniage.append(associatedImage)
         curPlayer = Player.init()
     }
-    
 }
 
 
