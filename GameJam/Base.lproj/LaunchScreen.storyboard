@@ -84,7 +84,7 @@ Boomers</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.77000000000000002" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprites_baby" translatesAutoresizingMaskIntoConstraints="NO" id="AQL-dy-slu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="AQL-dy-slu">
                                 <rect key="frame" x="120" y="180" width="360" height="240"/>
                             </imageView>
                         </subviews>
@@ -166,6 +166,6 @@ Boomers</string>
         </scene>
     </scenes>
     <resources>
-        <image name="sprites_baby" width="1103" height="741"/>
+        <image name="logo" width="1000" height="654"/>
     </resources>
 </document>
