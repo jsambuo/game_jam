@@ -14,6 +14,10 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        buildScene()
+    }
+    
+    func buildScene() {
         if let scene = GameScene(fileNamed:"GameScene") {
             // Configure the view.
             let skView = self.view as! SKView
@@ -54,7 +58,7 @@ class GameViewController: UIViewController {
     @IBAction func backToGame(sender: UIStoryboardSegue) {
         
         dismissViewControllerAnimated(true) {
-            print("Back to Title")
+            self.buildScene()
         }
     }
 }

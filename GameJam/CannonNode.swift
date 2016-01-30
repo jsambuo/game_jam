@@ -34,8 +34,7 @@ class CannonNode: SKSpriteNode {
         userInteractionEnabled = true
         
         if (withAmmo) {
-            let babyTexture = SKTexture(imageNamed: "sprites_baby")
-            let ammoNode = SKSpriteNode(texture: babyTexture, color: .clearColor(), size: CGSize(width: 40, height: 60))
+            let ammoNode = PlayerNode()
             loadAmmo(ammoNode)
         }
         
@@ -66,7 +65,7 @@ class CannonNode: SKSpriteNode {
     
     func shootNode() {
         guard
-            let ammoNode = self.ammoNode as? SKSpriteNode,
+            let ammoNode = self.ammoNode as? PlayerNode,
             let parent = self.parent
         else {
                 return
@@ -79,9 +78,15 @@ class CannonNode: SKSpriteNode {
         ammoNode.position = parentPosition
         self.parent?.addChild(ammoNode)
         
-        ammoNode.physicsBody = SKPhysicsBody(circleOfRadius: 12)
+        ammoNode.shootPlayer()
+        
+        guard let texture = ammoNode.texture
+            else {
+                return
+        }
+        ammoNode.physicsBody = SKPhysicsBody(texture: texture, size: ammoNode.size)
         ammoNode.physicsBody?.dynamic = true
-        ammoNode.physicsBody?.mass = 8
+        ammoNode.physicsBody?.mass = ammoNode.curPlayer.mass.rawValue
         ammoNode.physicsBody?.categoryBitMask = CategoryType.Projectile.rawValue
         ammoNode.physicsBody?.collisionBitMask = CategoryType.Projectile.rawValue
         ammoNode.physicsBody?.contactTestBitMask = CategoryType.Cannon.rawValue
@@ -96,7 +101,7 @@ class CannonNode: SKSpriteNode {
         ammoNode.runAction(repeatRotateAction)
     }
     
-    func loadAmmo(ammoNode:SKSpriteNode) {
+    func loadAmmo(ammoNode:PlayerNode) {
         self.ammoNode = ammoNode
         guard let ammoNode = self.ammoNode
             else {
@@ -112,6 +117,8 @@ class CannonNode: SKSpriteNode {
         
         ammoNode.position = CGPoint(x: 0, y: 30)
         ammoNode.zPosition = 1
+        
+        ammoNode.zRotation = 0
         
         used = true
         

@@ -14,6 +14,16 @@ class PlayerNode: SKSpriteNode {
     var cannonsShot = 0
     let SHOTS_PER_AGE = 3
     
+    init() {
+        super.init(texture: nil, color: .clearColor(), size: CGSize(width: 40, height: 60))
+        name = "player"
+        texture = associatedImage
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     enum Ages: Int {
         case BABY = 0
         case TWEEN
@@ -37,15 +47,52 @@ class PlayerNode: SKSpriteNode {
         }
     }
     
+    enum Masses: CGFloat {
+        case BABY = 8.0
+        case TWEEN = 9.0
+        case YOUNG_ADULT = 10.0
+        case MID_ADULT = 12.0
+        case OLD = 15.0
+        
+        var massArray: [Masses] {
+            return [Masses.BABY, Masses.TWEEN, Masses.YOUNG_ADULT, Masses.MID_ADULT, Masses.OLD]
+        }
+        
+        var next: Masses {
+            guard let currentIndex = massArray.indexOf(self)
+                else {
+                    return OLD
+            }
+            if currentIndex + 1 < massArray.count {
+                return massArray[currentIndex + 1]
+            } else {
+                return BABY
+            }
+        }
+        var previous: Masses {
+            guard let currentIndex = massArray.indexOf(self)
+                else {
+                    return BABY
+            }
+            if currentIndex - 1 >= 0  {
+                return massArray[currentIndex - 1]
+            } else {
+                return OLD
+            }
+        }
+    }
+    
     struct Player {
         
         var isFemale: Bool
         var age: Ages
+        var mass: Masses
         var curShotsInAge: Int
         
         init() {
             isFemale = Bool(Int(arc4random_uniform(1)))
             age = Ages.BABY
+            mass = Masses.BABY
             curShotsInAge = 0
         }
     }
@@ -53,13 +100,13 @@ class PlayerNode: SKSpriteNode {
     var liniage: [Player] = []
     
     /// Get the player's new age image
-    func getAssociatedImage() -> SKTexture {
+    var associatedImage: SKTexture {
         
         var imageName = ""
         switch (curPlayer.age) {
             
             case Ages.BABY:
-                imageName = "sprite_baby"
+                imageName = "sprites_baby"
             
             case Ages.TWEEN:
                 imageName = (curPlayer.isFemale) ? "female_tween" : "male_tween"
@@ -81,7 +128,7 @@ class PlayerNode: SKSpriteNode {
     func newGame() {
         
         curPlayer = Player.init()
-        self.texture = getAssociatedImage()
+        self.texture = associatedImage
         cannonsShot = 0
     }
     
@@ -95,8 +142,10 @@ class PlayerNode: SKSpriteNode {
         if (curPlayer.curShotsInAge > SHOTS_PER_AGE) {
             curPlayer.curShotsInAge = 0
             curPlayer.age = curPlayer.age.next
-            self.texture = getAssociatedImage()
+            curPlayer.mass = curPlayer.mass.next
+            self.texture = associatedImage
         }
+        print(curPlayer.mass)
     }
     
     /// For marriage cannon
