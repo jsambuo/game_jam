@@ -79,7 +79,6 @@ class GameScene: SKScene {
         }
         
         if let playerNode = childNodeWithName("player") {
-            print(playerNode.position.y)
             if playerNode.parent == self {
                 if playerNode.position.y < 0 {
                     resetGame()

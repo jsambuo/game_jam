@@ -115,6 +115,7 @@ final class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     func playSound(soundName: NSString) {
         
+        print("Sound effect")
         //let isSoundOn = defaults.boolForKey("soundOn")
         
         guard isSoundOn else {
