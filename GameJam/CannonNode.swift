@@ -28,12 +28,21 @@ class CannonNode: SKSpriteNode {
         ammoNode.position = CGPoint(x: 0, y: self.size.height)
         addChild(ammoNode)
         
-        let rotateLeftAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 1)
-        let rotateRightAction = SKAction.rotateToAngle(-CGFloat(M_PI_4), duration: 1)
-        let rotateArray = SKAction.sequence([rotateLeftAction, rotateRightAction])
-        let repeatAction = SKAction.repeatActionForever(rotateArray)
+        let rotateLeftInitialAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 0.5)
+        runAction(rotateLeftInitialAction) { 
+            let rotateLeftAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 1)
+            let rotateRightAction = SKAction.rotateToAngle(-CGFloat(M_PI_4), duration: 1)
+            let rotateArray = SKAction.sequence([rotateRightAction, rotateLeftAction])
+            let repeatAction = SKAction.repeatActionForever(rotateArray)
+            
+            self.runAction(repeatAction)
+        }
         
-        runAction(repeatAction)
+        let moveToBottomAction = SKAction.moveToY(-200, duration: 8)
+        
+        runAction(moveToBottomAction) {
+            self.removeFromParent()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -9,25 +9,36 @@
 import SpriteKit
 
 class GameScene: SKScene {
+    
+    var lastDropTime:CFTimeInterval? = nil
+    var dropInterval = 1.75
+    
     override func didMoveToView(view: SKView) {
-        let cannonNodeA = CannonNode()
-        cannonNodeA.position = CGPoint(x: self.size.width / 2, y: 100)
-        addChild(cannonNodeA)
-        
-        let cannonNodeB = CannonNode()
-        cannonNodeB.position = CGPoint(x: self.size.width / 2, y: 200)
-        addChild(cannonNodeB)
-        
-        let cannonNodeC = CannonNode()
-        cannonNodeC.position = CGPoint(x: self.size.width / 2, y: 400)
-        addChild(cannonNodeC)
-        
-        let cannonNodeD = CannonNode()
-        cannonNodeD.position = CGPoint(x: self.size.width / 2, y: 600)
-        addChild(cannonNodeD)
+
     }
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if let lastDropTime = self.lastDropTime {
+            if currentTime - lastDropTime > dropInterval {
+                let cannonNodeA = CannonNode()
+                
+                var randomX = CGFloat(Double(arc4random() % 256) / 256.0)
+                if randomX < 0.15 {
+                    randomX += 0.15
+                }
+                
+                if randomX > 0.85 {
+                    randomX -= 0.15
+                }
+                
+                cannonNodeA.position = CGPoint(x: self.size.width * randomX, y: self.size.height + 200)
+                addChild(cannonNodeA)
+                
+                self.lastDropTime = currentTime
+            }
+        } else {
+            lastDropTime = currentTime
+        }
     }
 }
