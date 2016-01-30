@@ -18,6 +18,7 @@ final class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     var musicPlayer: AVAudioPlayer?
     var sfxPlayer:   AVAudioPlayer?
+    var sfxAltPlayer:AVAudioPlayer?
     
     var audioSession: AVAudioSession!
     
@@ -62,7 +63,6 @@ final class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     func playTrack(trackName: NSString) {
         
-        //let isMusicOn = defaults.boolForKey("musicOn")
         let isOtherAudioPlaying: Bool = audioSession.secondaryAudioShouldBeSilencedHint
         
         if( isMusicOn && !isOtherAudioPlaying ) {
@@ -115,23 +115,20 @@ final class SoundManager: NSObject, AVAudioPlayerDelegate {
     
     func playSound(soundName: NSString) {
         
-        print("Sound effect")
-        //let isSoundOn = defaults.boolForKey("soundOn")
-        
         guard isSoundOn else {
             return
         }
         
         if let sfxPlayer = self.sfxPlayer where sfxPlayer.playing {
-            //self.fadeMusicOut()
-            sfxPlayer.stop()
-            self.sfxPlayer = nil
-        }
-        //play new track
-        guard let alertSound = NSBundle.mainBundle().URLForResource(soundName as String, withExtension: "caf") else {
+            print("Interupting cow")
+            playAltSound(soundName)
             return
         }
         
+        //play new track
+        guard let alertSound = NSBundle.mainBundle().URLForResource(soundName as String, withExtension: "mp3") else {
+            return
+        }
         
         do {
             let sfxPlayer = try AVAudioPlayer(contentsOfURL: alertSound)
@@ -143,6 +140,40 @@ final class SoundManager: NSObject, AVAudioPlayerDelegate {
             }
             
             self.sfxPlayer = sfxPlayer
+            
+        } catch {
+            print("ERROR: -- UNABLE TO PLAY AUDIO FROM URL")
+        }
+    }
+    
+    func playAltSound(soundName: NSString) {
+        
+        guard isSoundOn else {
+            return
+        }
+        
+        if let sfxAltPlayer = self.sfxAltPlayer where sfxAltPlayer.playing {
+            //self.fadeMusicOut()
+            sfxAltPlayer.stop()
+            self.sfxAltPlayer = nil
+        }
+        
+        //play new track
+        guard let alertSound = NSBundle.mainBundle().URLForResource(soundName as String, withExtension: "mp3") else {
+            return
+        }
+        
+        
+        do {
+            let sfxAltPlayer = try AVAudioPlayer(contentsOfURL: alertSound)
+            sfxAltPlayer.delegate = self
+            sfxAltPlayer.numberOfLoops = 0
+            sfxAltPlayer.volume = 1
+            if sfxAltPlayer.prepareToPlay() {
+                sfxAltPlayer.play()
+            }
+            
+            self.sfxAltPlayer = sfxAltPlayer
             
         } catch {
             print("ERROR: -- UNABLE TO PLAY AUDIO FROM URL")
