@@ -90,7 +90,7 @@ extension GameScene:SKPhysicsContactDelegate {
         
         if (cannonNode.used == false) {
             projectileNode.removeFromParent()
-            cannonNode.loadAmmo()
+            cannonNode.loadAmmo(projectileNode)
         }
     }
 }

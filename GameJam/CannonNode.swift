@@ -34,7 +34,9 @@ class CannonNode: SKSpriteNode {
         userInteractionEnabled = true
         
         if (withAmmo) {
-            loadAmmo()
+            let babyTexture = SKTexture(imageNamed: "sprites_baby")
+            let ammoNode = SKSpriteNode(texture: babyTexture, color: .clearColor(), size: CGSize(width: 40, height: 60))
+            loadAmmo(ammoNode)
         }
         
         let rotateLeftInitialAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 0.5)
@@ -94,16 +96,25 @@ class CannonNode: SKSpriteNode {
         ammoNode.runAction(repeatRotateAction)
     }
     
-    func loadAmmo() {
-        let babyTexture = SKTexture(imageNamed: "sprites_baby")
-        ammoNode = SKSpriteNode(texture: babyTexture, color: .clearColor(), size: CGSize(width: 40, height: 60))
-        guard let ammoNode = ammoNode as? SKSpriteNode
+    func loadAmmo(ammoNode:SKSpriteNode) {
+        self.ammoNode = ammoNode
+        guard let ammoNode = self.ammoNode
             else {
                 return
         }
+        
+        ammoNode.hidden = true
+        
+        ammoNode.removeAllActions()
+        ammoNode.physicsBody = nil
+        
+        addChild(ammoNode)
+        
         ammoNode.position = CGPoint(x: 0, y: 30)
         ammoNode.zPosition = 1
-        addChild(ammoNode)
+        
         used = true
+        
+        ammoNode.hidden = false
     }
 }
