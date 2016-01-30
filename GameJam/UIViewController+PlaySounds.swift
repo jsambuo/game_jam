@@ -34,7 +34,7 @@ extension UIResponder {
     
     /// When pressing a UI button (generic)
     func playButtonPress() {
-        SoundManager.sharedInstance.playSound("Tap2")
+        SoundManager.sharedInstance.playSound("buttonTap")
     }
     
     ////////////////////////////////////////////  Rituals  ////////////////////////////////////////////
@@ -57,17 +57,17 @@ extension UIResponder {
     
     /// When hitting a cannon - turkey
     func playRitualFood() {
-        SoundManager.sharedInstance.playSound("weddingBells")
+        SoundManager.sharedInstance.playSound("turkey")
     }
     
     /// When hitting a cannon - retirement
     func playRitualRetirement() {
-        SoundManager.sharedInstance.playSound("weddingBells")
+        SoundManager.sharedInstance.playSound("retirement")
     }
     
     /// When hitting a cannon - travel
     func playRitualTravel() {
-        SoundManager.sharedInstance.playSound("weddingBells")
+        SoundManager.sharedInstance.playSound("travel")
     }
     
     ////////////////////////////////////////////  Cannon  ////////////////////////////////////////////

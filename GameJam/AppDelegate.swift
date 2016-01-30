@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Set up user defaults -- init if needed
+        let defaults = SoundManager.sharedInstance.defaults
+        
+        if defaults.objectForKey("soundOn") as? Bool == nil {
+            defaults.setBool(true, forKey: "soundOn")
+        }
+        if defaults.objectForKey("musicOn") as? Bool == nil {
+            defaults.setBool(true, forKey: "musicOn")
+        }
+        
         return true
     }
 

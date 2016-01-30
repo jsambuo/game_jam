@@ -29,6 +29,10 @@
 		FA461EE21C5D6B6D003E6CFA /* menuTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA461ED81C5D6B6D003E6CFA /* menuTheme.mp3 */; };
 		FA461EE31C5D6B6D003E6CFA /* sadBaby.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA461ED91C5D6B6D003E6CFA /* sadBaby.mp3 */; };
 		FA461EE41C5D6B6D003E6CFA /* weddingBells.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA461EDA1C5D6B6D003E6CFA /* weddingBells.mp3 */; };
+		FA461EE61C5D7633003E6CFA /* retirement.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA461EE51C5D7633003E6CFA /* retirement.mp3 */; };
+		FA461EE91C5D7643003E6CFA /* travel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA461EE71C5D7643003E6CFA /* travel.mp3 */; };
+		FA461EEA1C5D7643003E6CFA /* buttonTap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA461EE81C5D7643003E6CFA /* buttonTap.mp3 */; };
+		FA461EEC1C5D7700003E6CFA /* turkey.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA461EEB1C5D7700003E6CFA /* turkey.mp3 */; };
 		FAC9F8CD1C5D364200C1101A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC9F8CC1C5D364200C1101A /* Assets.xcassets */; };
 		FAC9F8CF1C5D3A9800C1101A /* EndOfGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9F8CE1C5D3A9800C1101A /* EndOfGameVC.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +83,10 @@
 		FA461ED81C5D6B6D003E6CFA /* menuTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuTheme.mp3; sourceTree = "<group>"; };
 		FA461ED91C5D6B6D003E6CFA /* sadBaby.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sadBaby.mp3; sourceTree = "<group>"; };
 		FA461EDA1C5D6B6D003E6CFA /* weddingBells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = weddingBells.mp3; sourceTree = "<group>"; };
+		FA461EE51C5D7633003E6CFA /* retirement.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = retirement.mp3; sourceTree = "<group>"; };
+		FA461EE71C5D7643003E6CFA /* travel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = travel.mp3; sourceTree = "<group>"; };
+		FA461EE81C5D7643003E6CFA /* buttonTap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttonTap.mp3; sourceTree = "<group>"; };
+		FA461EEB1C5D7700003E6CFA /* turkey.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = turkey.mp3; sourceTree = "<group>"; };
 		FAC9F8CC1C5D364200C1101A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAC9F8CE1C5D3A9800C1101A /* EndOfGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -189,11 +197,15 @@
 		FA461ED01C5D6B4D003E6CFA /* Sound Effects */ = {
 			isa = PBXGroup;
 			children = (
+				FA461EE51C5D7633003E6CFA /* retirement.mp3 */,
 				FA461ED11C5D6B6D003E6CFA /* birthdayParty.mp3 */,
 				FA461ED21C5D6B6D003E6CFA /* cannonFire.mp3 */,
 				FA461ED31C5D6B6D003E6CFA /* cannonLoad.mp3 */,
+				FA461EEB1C5D7700003E6CFA /* turkey.mp3 */,
 				FA461ED51C5D6B6D003E6CFA /* deathGong.mp3 */,
 				FA461ED71C5D6B6D003E6CFA /* happyBaby.mp3 */,
+				FA461EE71C5D7643003E6CFA /* travel.mp3 */,
+				FA461EE81C5D7643003E6CFA /* buttonTap.mp3 */,
 				FA461ED91C5D6B6D003E6CFA /* sadBaby.mp3 */,
 				FA461EDA1C5D6B6D003E6CFA /* weddingBells.mp3 */,
 			);
@@ -306,15 +318,19 @@
 			files = (
 				FA461EDC1C5D6B6D003E6CFA /* cannonFire.mp3 in Resources */,
 				438260F81C5C3E5F00D3DBCA /* GameScene.sks in Resources */,
+				FA461EEA1C5D7643003E6CFA /* buttonTap.mp3 in Resources */,
 				FA461EE11C5D6B6D003E6CFA /* happyBaby.mp3 in Resources */,
+				FA461EE61C5D7633003E6CFA /* retirement.mp3 in Resources */,
 				438261041C5C3E5F00D3DBCA /* LaunchScreen.storyboard in Resources */,
 				FA461EE31C5D6B6D003E6CFA /* sadBaby.mp3 in Resources */,
 				FAC9F8CD1C5D364200C1101A /* Assets.xcassets in Resources */,
 				FA461EE41C5D6B6D003E6CFA /* weddingBells.mp3 in Resources */,
+				FA461EEC1C5D7700003E6CFA /* turkey.mp3 in Resources */,
 				FA461EE21C5D6B6D003E6CFA /* menuTheme.mp3 in Resources */,
 				FA461EDF1C5D6B6D003E6CFA /* deathGong.mp3 in Resources */,
 				438260FF1C5C3E5F00D3DBCA /* Main.storyboard in Resources */,
 				FA461EDD1C5D6B6D003E6CFA /* cannonLoad.mp3 in Resources */,
+				FA461EE91C5D7643003E6CFA /* travel.mp3 in Resources */,
 				FA461EDB1C5D6B6D003E6CFA /* birthdayParty.mp3 in Resources */,
 				FA461EE01C5D6B6D003E6CFA /* gameTheme.mp3 in Resources */,
 			);
