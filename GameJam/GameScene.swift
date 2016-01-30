@@ -18,13 +18,38 @@ class GameScene: SKScene {
         view.showsPhysics = true
         self.physicsWorld.gravity = CGVectorMake(0, -9.81)
         self.physicsWorld.contactDelegate = self
-        
+        createSceneContents()
+    }
+    
+    func createSceneContents() {
         initializingScrollingBackground()
         
         let initialCannonNode = CannonNode(withAmmo: true)
         
         initialCannonNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         addChild(initialCannonNode)
+        
+        let resetNode = SKLabelNode(text: "Reset")
+        resetNode.position = CGPoint(x: 40, y: self.size.height - 40)
+        resetNode.zPosition = 100
+        addChild(resetNode)
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        guard let touch = touches.first
+            else {
+                return
+        }
+        
+        let point = touch.locationInNode(self)
+        for node in nodesAtPoint(point) {
+            guard let labelNode = node as? SKLabelNode
+                else {
+                    continue
+            }
+            
+            resetGame()
+        }
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -52,6 +77,15 @@ class GameScene: SKScene {
         } else {
             lastDropTime = currentTime
         }
+        
+        if let playerNode = childNodeWithName("player") {
+            print(playerNode.position.y)
+            if playerNode.parent == self {
+                if playerNode.position.y < 0 {
+                    resetGame()
+                }
+            }
+        }
     }
     
     func initializingScrollingBackground() {
@@ -77,12 +111,18 @@ class GameScene: SKScene {
             }
         })
     }
+    
+    func resetGame() {
+        self.removeAllChildren()
+        self.removeAllActions()
+        self.createSceneContents()
+    }
 }
 
 extension GameScene:SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact) {
         guard
-            let projectileNode = contact.bodyB.node as? SKSpriteNode,
+            let projectileNode = contact.bodyB.node as? PlayerNode,
             let cannonNode = contact.bodyA.node as? CannonNode
             else {
             return
@@ -90,7 +130,7 @@ extension GameScene:SKPhysicsContactDelegate {
         
         if (cannonNode.used == false) {
             projectileNode.removeFromParent()
-            cannonNode.loadAmmo()
+            cannonNode.loadAmmo(projectileNode)
         }
     }
 }
