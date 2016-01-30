@@ -28,8 +28,8 @@ class EndOfGameVC: UIViewController {
         cherubs.frame.origin.y = self.view.frame.height
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         // Animate cherubs onto screen
         UIView.animateWithDuration(0.4, animations: { () -> Void in
