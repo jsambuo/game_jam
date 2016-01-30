@@ -50,4 +50,11 @@ class GameViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    @IBAction func backToGame(sender: UIStoryboardSegue) {
+        
+        dismissViewControllerAnimated(true) {
+            print("Back to Title")
+        }
+    }
 }
