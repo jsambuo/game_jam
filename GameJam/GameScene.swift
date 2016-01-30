@@ -16,7 +16,7 @@ class GameScene: SKScene {
     var backgroundVelocity : CGFloat = 1.0
     
     override func didMoveToView(view: SKView) {
-        view.showsPhysics = true
+        //view.showsPhysics = true
         self.physicsWorld.gravity = CGVectorMake(0, -9.81)
         self.physicsWorld.contactDelegate = self
         createSceneContents()
