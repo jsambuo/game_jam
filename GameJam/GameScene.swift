@@ -11,7 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     var lastDropTime:CFTimeInterval? = nil
-    var dropInterval = 1.75
+    var dropInterval = 1.3
     
     override func didMoveToView(view: SKView) {
 
