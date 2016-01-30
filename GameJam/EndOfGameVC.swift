@@ -51,6 +51,6 @@ class EndOfGameVC: UIViewController {
     }
     
     @IBAction func backButton(sender: AnyObject) {
-    
+        performSegueWithIdentifier("backToGame", sender: nil)
     }
 }

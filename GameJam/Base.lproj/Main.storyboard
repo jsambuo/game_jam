@@ -107,9 +107,11 @@
                     </view>
                     <connections>
                         <outlet property="cherubs" destination="UbR-Wa-wcg" id="UHg-Cm-JN8"/>
+                        <segue destination="fAs-g6-YxJ" kind="unwind" identifier="backToGame" unwindAction="backToGame:" id="GOL-EV-2KH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7M-GE-cxA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fAs-g6-YxJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1028" y="372"/>
         </scene>
