@@ -11,13 +11,21 @@ import SpriteKit
 class CannonNode: SKSpriteNode {
 
     var ammoNode:SKNode? = nil
+    var used:Bool = false
     
-    init() {
-        let size = CGSize(width: 50, height: 50)
-        
+    init(withAmmo:Bool) {
+        let size = CGSize(width: 100, height: 100)
         
         let cannonTexture = SKTexture(imageNamed: "cannon")
         super.init(texture: nil, color: .clearColor(), size: size)
+        
+        physicsBody = SKPhysicsBody(texture: cannonTexture, size: size)
+        physicsBody?.mass = 8
+        physicsBody?.affectedByGravity = false
+        physicsBody?.dynamic = true
+        physicsBody?.collisionBitMask = CategoryType.Cannon.rawValue
+        physicsBody?.categoryBitMask = CategoryType.Cannon.rawValue
+        physicsBody?.contactTestBitMask = CategoryType.Projectile.rawValue
         
         let cannonNode = SKSpriteNode(texture: cannonTexture, color: .clearColor(), size: size)
         cannonNode.zPosition = 10
@@ -25,15 +33,9 @@ class CannonNode: SKSpriteNode {
         
         userInteractionEnabled = true
         
-        let babyTexture = SKTexture(imageNamed: "sprites_baby")
-        ammoNode = SKSpriteNode(texture: babyTexture, color: .clearColor(), size: CGSize(width: 40, height: 60))
-        guard let ammoNode = ammoNode as? SKSpriteNode
-            else {
-                return
+        if (withAmmo) {
+            loadAmmo()
         }
-        ammoNode.position = CGPoint(x: 0, y: self.size.height - 30)
-        ammoNode.zPosition = 1
-        addChild(ammoNode)
         
         let rotateLeftInitialAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 0.5)
         runAction(rotateLeftInitialAction) { 
@@ -68,13 +70,19 @@ class CannonNode: SKSpriteNode {
                 return
         }
         
+        used = true
+        
         let parentPosition = convertPoint(ammoNode.position, toNode: parent)
         ammoNode.removeFromParent()
         ammoNode.position = parentPosition
         self.parent?.addChild(ammoNode)
         
         ammoNode.physicsBody = SKPhysicsBody(circleOfRadius: 12)
+        ammoNode.physicsBody?.dynamic = true
         ammoNode.physicsBody?.mass = 8
+        ammoNode.physicsBody?.categoryBitMask = CategoryType.Projectile.rawValue
+        ammoNode.physicsBody?.collisionBitMask = CategoryType.Projectile.rawValue
+        ammoNode.physicsBody?.contactTestBitMask = CategoryType.Cannon.rawValue
         
         let dx = CGFloat(tanf(Float(self.zRotation))) * -5000
         
@@ -84,5 +92,18 @@ class CannonNode: SKSpriteNode {
         let repeatRotateAction = SKAction.repeatActionForever(rotateAction)
         
         ammoNode.runAction(repeatRotateAction)
+    }
+    
+    func loadAmmo() {
+        let babyTexture = SKTexture(imageNamed: "sprites_baby")
+        ammoNode = SKSpriteNode(texture: babyTexture, color: .clearColor(), size: CGSize(width: 40, height: 60))
+        guard let ammoNode = ammoNode as? SKSpriteNode
+            else {
+                return
+        }
+        ammoNode.position = CGPoint(x: 0, y: 30)
+        ammoNode.zPosition = 1
+        addChild(ammoNode)
+        used = true
     }
 }

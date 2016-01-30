@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		433FECE51C5D04F200A8AA48 /* CannonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FECE41C5D04F200A8AA48 /* CannonNode.swift */; };
+		433FECE71C5D430B00A8AA48 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433FECE61C5D430B00A8AA48 /* Enums.swift */; };
 		438260F61C5C3E5F00D3DBCA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438260F51C5C3E5F00D3DBCA /* AppDelegate.swift */; };
 		438260F81C5C3E5F00D3DBCA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 438260F71C5C3E5F00D3DBCA /* GameScene.sks */; };
 		438260FA1C5C3E5F00D3DBCA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438260F91C5C3E5F00D3DBCA /* GameScene.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		433FECE41C5D04F200A8AA48 /* CannonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannonNode.swift; sourceTree = "<group>"; };
+		433FECE61C5D430B00A8AA48 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		438260F21C5C3E5E00D3DBCA /* GameJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438260F51C5C3E5F00D3DBCA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		438260F71C5C3E5F00D3DBCA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				438260FD1C5C3E5F00D3DBCA /* Main.storyboard */,
 				438261021C5C3E5F00D3DBCA /* LaunchScreen.storyboard */,
 				438261051C5C3E5F00D3DBCA /* Info.plist */,
+				433FECE61C5D430B00A8AA48 /* Enums.swift */,
 			);
 			path = GameJam;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				438260FA1C5C3E5F00D3DBCA /* GameScene.swift in Sources */,
 				438260FC1C5C3E5F00D3DBCA /* GameViewController.swift in Sources */,
 				433FECE51C5D04F200A8AA48 /* CannonNode.swift in Sources */,
+				433FECE71C5D430B00A8AA48 /* Enums.swift in Sources */,
 				438260F61C5C3E5F00D3DBCA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
