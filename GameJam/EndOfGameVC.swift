@@ -16,6 +16,11 @@ class EndOfGameVC: UIViewController {
     
     var shouldFloat = true
     
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,9 +40,9 @@ class EndOfGameVC: UIViewController {
         }
     }
     
+    /// Forever hover animation
     func floatCherubs() {
         
-        // Forever hover animation
         let hoverAmt = 15
         
         UIView.animateWithDuration(0.8, delay: 0.01, options: [.Repeat, .Autoreverse], animations: { () -> Void in
@@ -45,7 +50,7 @@ class EndOfGameVC: UIViewController {
             }) { (finished) -> Void in }
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    @IBAction func backButton(sender: AnyObject) {
+    
     }
 }

@@ -64,17 +64,33 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="endscreen-cherubs-1" translatesAutoresizingMaskIntoConstraints="NO" id="UbR-Wa-wcg">
                                 <rect key="frame" x="60" y="20" width="480" height="300"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-zK-RQc">
+                                <rect key="frame" x="20" y="520" width="120" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DEO-oY-xVL"/>
+                                    <constraint firstAttribute="width" constant="120" id="ZhV-Kc-1em"/>
+                                </constraints>
+                                <state key="normal" image="backInactive"/>
+                                <state key="highlighted" image="backActive"/>
+                                <connections>
+                                    <action selector="backButton:" destination="y59-pH-C6C" eventType="touchUpInside" id="srx-QD-Teo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gPk-xm-JYe" firstAttribute="centerY" secondItem="qvL-sC-Fbz" secondAttribute="centerY" id="0Tq-lo-FNM"/>
                             <constraint firstItem="riF-kH-8CH" firstAttribute="centerY" secondItem="qvL-sC-Fbz" secondAttribute="centerY" id="4MN-lk-mVS"/>
                             <constraint firstItem="gPk-xm-JYe" firstAttribute="height" secondItem="qvL-sC-Fbz" secondAttribute="height" multiplier="0.9" id="IVE-QB-hus"/>
+                            <constraint firstItem="TvL-el-tCw" firstAttribute="top" secondItem="4S3-zK-RQc" secondAttribute="bottom" constant="20" id="JYL-og-FjV"/>
                             <constraint firstItem="riF-kH-8CH" firstAttribute="height" secondItem="qvL-sC-Fbz" secondAttribute="height" id="Mf8-vy-wEI"/>
                             <constraint firstItem="UbR-Wa-wcg" firstAttribute="height" secondItem="qvL-sC-Fbz" secondAttribute="height" multiplier="0.5" id="Oe2-Uj-KoD"/>
                             <constraint firstItem="UbR-Wa-wcg" firstAttribute="top" secondItem="uRr-5e-Zzu" secondAttribute="bottom" id="QtD-hh-eIh"/>
+                            <constraint firstItem="4S3-zK-RQc" firstAttribute="width" secondItem="qvL-sC-Fbz" secondAttribute="width" multiplier="0.2" id="Wfh-AR-NRb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="4S3-zK-RQc" secondAttribute="leading" id="b1U-ev-9xn"/>
                             <constraint firstItem="gPk-xm-JYe" firstAttribute="centerX" secondItem="qvL-sC-Fbz" secondAttribute="centerX" id="gNg-t7-0EB"/>
                             <constraint firstItem="riF-kH-8CH" firstAttribute="centerX" secondItem="qvL-sC-Fbz" secondAttribute="centerX" id="hHe-V5-cCc"/>
+                            <constraint firstItem="4S3-zK-RQc" firstAttribute="height" secondItem="qvL-sC-Fbz" secondAttribute="height" multiplier="0.1" id="k1T-nQ-0fV"/>
                             <constraint firstItem="riF-kH-8CH" firstAttribute="width" secondItem="qvL-sC-Fbz" secondAttribute="width" id="nNx-sT-nee"/>
                             <constraint firstItem="UbR-Wa-wcg" firstAttribute="centerY" secondItem="qvL-sC-Fbz" secondAttribute="centerY" id="pFv-u4-GdN"/>
                             <constraint firstItem="gPk-xm-JYe" firstAttribute="width" secondItem="qvL-sC-Fbz" secondAttribute="width" id="sBi-vQ-8l5"/>
@@ -84,6 +100,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="pFv-u4-GdN"/>
+                                <exclude reference="Wfh-AR-NRb"/>
+                                <exclude reference="k1T-nQ-0fV"/>
                             </mask>
                         </variation>
                     </view>
@@ -97,6 +115,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backActive" width="200" height="80"/>
+        <image name="backInactive" width="200" height="80"/>
         <image name="endscreen-cherubs-1" width="1000" height="573"/>
         <image name="frame" width="1000" height="1290"/>
         <image name="sky-1" width="1080" height="2271"/>
