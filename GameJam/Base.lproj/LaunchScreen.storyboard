@@ -166,6 +166,6 @@ Boomers</string>
         </scene>
     </scenes>
     <resources>
-        <image name="sprites_baby" width="1103" height="741"/>
+        <image name="sprites_baby" width="200" height="298"/>
     </resources>
 </document>
