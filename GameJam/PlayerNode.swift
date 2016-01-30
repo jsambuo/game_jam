@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class PlayerVC: SKSpriteNode {
+class PlayerNode: SKSpriteNode {
 
     var cannonsShot = 0
     let SHOTS_PER_AGE = 3
