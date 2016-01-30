@@ -15,17 +15,24 @@ class CannonNode: SKSpriteNode {
     init() {
         let size = CGSize(width: 50, height: 50)
         
-        super.init(texture: nil, color: .blueColor(), size: size)
+        
+        let cannonTexture = SKTexture(imageNamed: "cannon")
+        super.init(texture: nil, color: .clearColor(), size: size)
+        
+        let cannonNode = SKSpriteNode(texture: cannonTexture, color: .clearColor(), size: size)
+        cannonNode.zPosition = 10
+        addChild(cannonNode)
         
         userInteractionEnabled = true
         
-        ammoNode = SKShapeNode(circleOfRadius: self.size.height / 2)
-        guard let ammoNode = ammoNode as? SKShapeNode
+        let babyTexture = SKTexture(imageNamed: "sprites_baby")
+        ammoNode = SKSpriteNode(texture: babyTexture, color: .clearColor(), size: CGSize(width: 40, height: 60))
+        guard let ammoNode = ammoNode as? SKSpriteNode
             else {
                 return
         }
-        ammoNode.fillColor = UIColor.blueColor()
-        ammoNode.position = CGPoint(x: 0, y: self.size.height)
+        ammoNode.position = CGPoint(x: 0, y: self.size.height - 30)
+        ammoNode.zPosition = 1
         addChild(ammoNode)
         
         let rotateLeftInitialAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 0.5)
@@ -55,7 +62,7 @@ class CannonNode: SKSpriteNode {
     
     func shootNode() {
         guard
-            let ammoNode = self.ammoNode as? SKShapeNode,
+            let ammoNode = self.ammoNode as? SKSpriteNode,
             let parent = self.parent
         else {
                 return
@@ -67,10 +74,15 @@ class CannonNode: SKSpriteNode {
         self.parent?.addChild(ammoNode)
         
         ammoNode.physicsBody = SKPhysicsBody(circleOfRadius: 12)
-        ammoNode.physicsBody?.mass = 12
+        ammoNode.physicsBody?.mass = 8
         
         let dx = CGFloat(tanf(Float(self.zRotation))) * -5000
         
         ammoNode.physicsBody?.applyImpulse(CGVector(dx: dx, dy: 10000))
+        
+        let rotateAction = SKAction.rotateByAngle(1, duration: 0.25)
+        let repeatRotateAction = SKAction.repeatActionForever(rotateAction)
+        
+        ammoNode.runAction(repeatRotateAction)
     }
 }

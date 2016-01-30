@@ -17,7 +17,7 @@
 		4382610F1C5C3E5F00D3DBCA /* GameJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382610E1C5C3E5F00D3DBCA /* GameJamTests.swift */; };
 		4382611A1C5C3E5F00D3DBCA /* GameJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438261191C5C3E5F00D3DBCA /* GameJamUITests.swift */; };
 		FA16F1261C5D061900114B65 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16F1251C5D061900114B65 /* Player.swift */; };
-		FAC9F8CD1C5D364200C1101A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC9F8CC1C5D364200C1101A /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		FAC9F8CD1C5D364200C1101A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC9F8CC1C5D364200C1101A /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,7 +205,7 @@
 				TargetAttributes = {
 					438260F11C5C3E5E00D3DBCA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 9Y64U79X82;
+						DevelopmentTeam = 4A6Y3LCD29;
 					};
 					438261091C5C3E5F00D3DBCA = {
 						CreatedOnToolsVersion = 7.3;
