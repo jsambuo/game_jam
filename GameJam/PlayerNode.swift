@@ -12,7 +12,7 @@ import SpriteKit
 class PlayerNode: SKSpriteNode {
 
     var cannonsShot = 0
-    let SHOTS_PER_AGE = 15
+    let SHOTS_PER_AGE = 5
     
     init() {
         super.init(texture: nil, color: .clearColor(), size: CGSize(width: 40, height: 60))
