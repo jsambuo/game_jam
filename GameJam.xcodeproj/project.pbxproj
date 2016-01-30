@@ -18,7 +18,8 @@
 		4382610F1C5C3E5F00D3DBCA /* GameJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4382610E1C5C3E5F00D3DBCA /* GameJamTests.swift */; };
 		4382611A1C5C3E5F00D3DBCA /* GameJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438261191C5C3E5F00D3DBCA /* GameJamUITests.swift */; };
 		FA16F1261C5D061900114B65 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16F1251C5D061900114B65 /* Player.swift */; };
-		FAC9F8CD1C5D364200C1101A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC9F8CC1C5D364200C1101A /* Assets.xcassets */; };
+		FAC9F8CD1C5D364200C1101A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAC9F8CC1C5D364200C1101A /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
+		FAC9F8CF1C5D3A9800C1101A /* EndOfGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9F8CE1C5D3A9800C1101A /* EndOfGameVC.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		4382611B1C5C3E5F00D3DBCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA16F1251C5D061900114B65 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FAC9F8CC1C5D364200C1101A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAC9F8CE1C5D3A9800C1101A /* EndOfGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndOfGameVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				433FECE41C5D04F200A8AA48 /* CannonNode.swift */,
 				438260F91C5C3E5F00D3DBCA /* GameScene.swift */,
 				438260FB1C5C3E5F00D3DBCA /* GameViewController.swift */,
+				FAC9F8CE1C5D3A9800C1101A /* EndOfGameVC.swift */,
 				438260FD1C5C3E5F00D3DBCA /* Main.storyboard */,
 				438261021C5C3E5F00D3DBCA /* LaunchScreen.storyboard */,
 				438261051C5C3E5F00D3DBCA /* Info.plist */,
@@ -279,6 +282,7 @@
 				433FECE51C5D04F200A8AA48 /* CannonNode.swift in Sources */,
 				433FECE71C5D430B00A8AA48 /* Enums.swift in Sources */,
 				438260F61C5C3E5F00D3DBCA /* AppDelegate.swift in Sources */,
+				FAC9F8CF1C5D3A9800C1101A /* EndOfGameVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
