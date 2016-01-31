@@ -11,8 +11,12 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     
+    var textureArray:AnyObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "endGame:", name:"EndGame", object: nil)
 
         playMusic()
         buildScene()
@@ -54,6 +58,20 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func endGame(notification:NSNotification?) {
+        textureArray = notification?.object
+        performSegueWithIdentifier("endGamePopoverIdentifier", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let endOfGameVC = segue.destinationViewController as? EndOfGameVC
+            else {
+                return
+        }
+        
+        endOfGameVC.textureArray = textureArray
     }
     
     @IBAction func backToGame(sender: UIStoryboardSegue) {

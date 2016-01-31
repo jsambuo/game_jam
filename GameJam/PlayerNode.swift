@@ -18,6 +18,7 @@ class PlayerNode: SKSpriteNode {
         super.init(texture: nil, color: .clearColor(), size: CGSize(width: 40, height: 60))
         name = "player"
         texture = associatedImage
+        liniage.append(associatedImage)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -86,6 +87,7 @@ class PlayerNode: SKSpriteNode {
         
         var isFemale: Bool
         var age: Ages
+        var generation: Int
         var mass: Masses
         var curShotsInAge: Int
         
@@ -94,6 +96,7 @@ class PlayerNode: SKSpriteNode {
             age = Ages.BABY
             mass = Masses.BABY
             curShotsInAge = 0
+            generation = 1
         }
     }
     var curPlayer: Player = Player.init()
@@ -144,6 +147,9 @@ class PlayerNode: SKSpriteNode {
         if (curPlayer.curShotsInAge > SHOTS_PER_AGE) {
             curPlayer.curShotsInAge = 0
             curPlayer.age = curPlayer.age.next
+            if curPlayer.age == Ages.BABY {
+                curPlayer.generation += 1
+            }
             curPlayer.mass = curPlayer.mass.next
             self.texture = associatedImage
             liniage.append(associatedImage)

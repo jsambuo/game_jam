@@ -89,12 +89,15 @@ class GameScene: SKScene {
             
             if let scoreNode = childNodeWithName("score") as? SKLabelNode {
                 let year = playerNode.curPlayer.curShotsInAge
-                scoreNode.text = "G: 1 Y: \(year)"
+                let generation = playerNode.curPlayer.generation
+                scoreNode.text = "G: \(generation) Y: \(year)"
+                print(playerNode.liniage)
             }
             
             if playerNode.parent == self {
                 if playerNode.position.y < 0 {
-                    resetGame()
+                    playerNode.removeFromParent()
+                    NSNotificationCenter.defaultCenter().postNotificationName("EndGame", object: playerNode.liniage)
                 }
             }
         }

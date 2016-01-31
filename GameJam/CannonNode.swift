@@ -95,6 +95,7 @@ class CannonNode: SKSpriteNode {
         let repeatRotateAction = SKAction.repeatActionForever(rotateAction)
         
         ammoNode.runAction(repeatRotateAction)
+        userInteractionEnabled = false
     }
     
     func loadAmmo(ammoNode:PlayerNode) {
