@@ -17,6 +17,8 @@ class GameScene: SKScene {
     
     var initialCannonNode: CannonNode!
     
+    var tapNode: SKSpriteNode!
+    
     var hasBegunGame = false
     
     override func didMoveToView(view: SKView) {
@@ -45,6 +47,24 @@ class GameScene: SKScene {
         resetNode.position = CGPoint(x: 40, y: self.size.height - 40)
         resetNode.zPosition = 100
         addChild(resetNode)
+        
+        // Tap to start Label
+        tapNode = SKSpriteNode.init(imageNamed: "tapToStart")
+        tapNode.position = CGPoint(x: self.size.width  / 2,
+                                   y: self.size.height / 3)
+        tapNode.zPosition = 101
+        addChild(tapNode)
+        
+        // Start Label Animation
+        let scaleSmallInitial = SKAction.scaleTo(0.4, duration: 0.1)
+        runAction(scaleSmallInitial) {
+            let scaleSmall = SKAction.scaleTo(0.4, duration: 0.4)
+            let scaleLarge = SKAction.scaleTo(0.66, duration: 0.4)
+            let scalingArray = SKAction.sequence([scaleSmall, scaleLarge])
+            let repeatAction = SKAction.repeatActionForever(scalingArray)
+            
+            self.tapNode.runAction(repeatAction)
+        }
         
         // Score Label
         let scoreNode = SKLabelNode(text: "G: 1 Y: 1")
@@ -137,7 +157,9 @@ class GameScene: SKScene {
         }
         
         // Remove tap to start label
-        
+        tapNode.removeAllActions()
+        // Fade out
+        tapNode.removeFromParent()
         
     }
     
