@@ -19,10 +19,10 @@ class FrameScene: SKScene {
 //        }
         
         for object in textureArray as! Array<AnyObject> {
-            guard let texture = object as? SKTexture
-                else {
-                    return
+            guard let texture = object as? SKTexture else {
+                return
             }
+            
             let textureNode = SKSpriteNode(texture: texture)
             textureNode.size = CGSize(width: 50, height: 50)
             textureNode.position = CGPoint(x: 50, y: 50)
