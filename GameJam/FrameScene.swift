@@ -28,5 +28,6 @@ class FrameScene: SKScene {
 //            textureNode.position = CGPoint(x: 50, y: 50)
 //            addChild(textureNode)
 //        }
+
     }
 }

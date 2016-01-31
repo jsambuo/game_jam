@@ -145,15 +145,15 @@
 			children = (
 				FA461ECA1C5D68F8003E6CFA /* Sound */,
 				438260F51C5C3E5F00D3DBCA /* AppDelegate.swift */,
-				FA16F1251C5D061900114B65 /* PlayerNode.swift */,
-				FAC9F8CC1C5D364200C1101A /* Assets.xcassets */,
-				438260F71C5C3E5F00D3DBCA /* GameScene.sks */,
-				433FECE41C5D04F200A8AA48 /* CannonNode.swift */,
 				438260F91C5C3E5F00D3DBCA /* GameScene.swift */,
-				438260FB1C5C3E5F00D3DBCA /* GameViewController.swift */,
-				FAC9F8CE1C5D3A9800C1101A /* EndOfGameVC.swift */,
+				438260F71C5C3E5F00D3DBCA /* GameScene.sks */,
 				433FECEA1C5D912100A8AA48 /* FrameScene.swift */,
 				433FECE81C5D8FDE00A8AA48 /* FrameScene.sks */,
+				438260FB1C5C3E5F00D3DBCA /* GameViewController.swift */,
+				FAC9F8CE1C5D3A9800C1101A /* EndOfGameVC.swift */,
+				433FECE41C5D04F200A8AA48 /* CannonNode.swift */,
+				FA16F1251C5D061900114B65 /* PlayerNode.swift */,
+				FAC9F8CC1C5D364200C1101A /* Assets.xcassets */,
 				438260FD1C5C3E5F00D3DBCA /* Main.storyboard */,
 				438261021C5C3E5F00D3DBCA /* LaunchScreen.storyboard */,
 				438261051C5C3E5F00D3DBCA /* Info.plist */,
@@ -286,7 +286,7 @@
 				TargetAttributes = {
 					438260F11C5C3E5E00D3DBCA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4A6Y3LCD29;
+						DevelopmentTeam = 9Y64U79X82;
 					};
 					438261091C5C3E5F00D3DBCA = {
 						CreatedOnToolsVersion = 7.3;

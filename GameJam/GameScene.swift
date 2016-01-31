@@ -16,25 +16,29 @@ class GameScene: SKScene {
     var backgroundVelocity : CGFloat = 1.0
     
     override func didMoveToView(view: SKView) {
-        //view.showsPhysics = true
+        
         self.physicsWorld.gravity = CGVectorMake(0, -9.81)
         self.physicsWorld.contactDelegate = self
+        
         createSceneContents()
     }
     
     func createSceneContents() {
+        
         initializingScrollingBackground()
         
+        // Cannon
         let initialCannonNode = CannonNode(withAmmo: true)
-        
         initialCannonNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         addChild(initialCannonNode)
         
+        // Reset Btn
         let resetNode = SKLabelNode(text: "Reset")
         resetNode.position = CGPoint(x: 40, y: self.size.height - 40)
         resetNode.zPosition = 100
         addChild(resetNode)
         
+        // Score Label
         let scoreNode = SKLabelNode(text: "G: 1 Y: 1")
         scoreNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 40)
         scoreNode.zPosition = 100
@@ -50,9 +54,8 @@ class GameScene: SKScene {
         
         let point = touch.locationInNode(self)
         for node in nodesAtPoint(point) {
-            guard let labelNode = node as? SKLabelNode
-                else {
-                    continue
+            guard let _ = node as? SKLabelNode else {
+                continue
             }
             
             resetGame()
@@ -81,12 +84,14 @@ class GameScene: SKScene {
                 
                 self.lastDropTime = currentTime
             }
-        } else {
+        }
+        else {
             lastDropTime = currentTime
         }
         
         if let playerNode = childNodeWithName("player") as? PlayerNode {
             
+            // Update score label
             if let scoreNode = childNodeWithName("score") as? SKLabelNode {
                 let year = playerNode.curPlayer.curShotsInAge
                 let generation = playerNode.curPlayer.generation
