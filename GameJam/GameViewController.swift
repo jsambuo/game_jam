@@ -12,12 +12,15 @@ import SpriteKit
 class GameViewController: UIViewController {
     
     var textureArray:AnyObject?
+    @IBOutlet weak var soundBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "endGame:", name:"EndGame", object: nil)
 
+        soundToggle(!SoundManager.sharedInstance.isSoundOn)
+        
         playMusic()
         buildScene()
     }
@@ -72,6 +75,32 @@ class GameViewController: UIViewController {
         }
         
         endOfGameVC.textureArray = textureArray
+    } 
+    
+    @IBAction func soundBtn(sender: AnyObject) {
+        
+        // Toggle sound
+        let isSoundOn = SoundManager.sharedInstance.isSoundOn
+            
+        // Save
+        SoundManager.sharedInstance.defaults.setBool(!isSoundOn, forKey: "soundOn")
+        SoundManager.sharedInstance.defaults.setBool(!isSoundOn, forKey: "musicOn")
+        
+        soundToggle(isSoundOn)
+    }
+    
+    func soundToggle(isSoundOn: Bool) {
+        
+        if (isSoundOn) {
+            soundBtn.setImage(UIImage(named: "soundOffInactive"), forState: UIControlState.Normal)
+            soundBtn.setImage(UIImage(named: "soundOffActive"),   forState: UIControlState.Highlighted)
+            stopMusic()
+        } else {
+            soundBtn.setImage(UIImage(named: "soundOnInactive"), forState: UIControlState.Normal)
+            soundBtn.setImage(UIImage(named: "soundOnActive"),   forState: UIControlState.Highlighted)
+            playButtonPress()
+            playMusic()
+        }
     }
     
     @IBAction func backToGame(sender: UIStoryboardSegue) {

@@ -120,7 +120,6 @@ final class SoundManager: NSObject, AVAudioPlayerDelegate {
         }
         
         if let sfxPlayer = self.sfxPlayer where sfxPlayer.playing {
-            print("Interupting cow")
             playAltSound(soundName)
             return
         }

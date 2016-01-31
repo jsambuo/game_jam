@@ -10,13 +10,52 @@ import SpriteKit
 
 class CannonNode: SKSpriteNode {
 
+    enum CannonType: Int {
+        case BIRTH = 0
+        case PARTY
+        case MARRIAGE
+        case TRAVEL
+        case FOOD
+        case RETIREMENT
+    }
+    
     var ammoNode:SKNode? = nil
     var used:Bool = false
     
     init(withAmmo:Bool) {
         let size = CGSize(width: 100, height: 100)
         
-        let cannonTexture = SKTexture(imageNamed: "cannon")
+        var cannonTexture = SKTexture(imageNamed: "birthcannon")
+        switch (Int(arc4random_uniform(6))) {
+            
+            case CannonType.BIRTH.rawValue:
+                cannonTexture = SKTexture(imageNamed: "birthcannon")
+                break
+                
+            case CannonType.PARTY.rawValue:
+                cannonTexture = SKTexture(imageNamed: "partycannon")
+                break
+                
+            case CannonType.MARRIAGE.rawValue:
+                cannonTexture = SKTexture(imageNamed: "weddingcannon")
+                break
+                
+            case CannonType.TRAVEL.rawValue:
+                cannonTexture = SKTexture(imageNamed: "travelcannon")
+                break
+                
+            case CannonType.FOOD.rawValue:
+                cannonTexture = SKTexture(imageNamed: "turkeycannon")
+                break
+                
+            case CannonType.RETIREMENT.rawValue:
+                cannonTexture = SKTexture(imageNamed: "retirementcannon")
+                break
+            
+            default:
+                break
+        }
+        
         super.init(texture: nil, color: .clearColor(), size: size)
         
         physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 50, height: 100))
