@@ -16,7 +16,7 @@ class CannonNode: SKSpriteNode {
     init(withAmmo:Bool) {
         let size = CGSize(width: 100, height: 100)
         
-        let cannonTexture = SKTexture(imageNamed: "cannon")
+        let cannonTexture = SKTexture(imageNamed: "birthcannon")
         super.init(texture: nil, color: .clearColor(), size: size)
         
         physicsBody = SKPhysicsBody(rectangleOfSize: CGSize(width: 50, height: 100))
