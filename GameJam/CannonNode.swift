@@ -104,9 +104,13 @@ class CannonNode: SKSpriteNode {
     
     func moveToBottomAction() {
         
-        let moveToBottomAction = SKAction.moveToY(-200, duration: 8)
+        let moveToBottomAction = SKAction.moveToY(-80, duration: 8)
         
         runAction(moveToBottomAction) {
+                
+            if let ammoNode = self.ammoNode as? PlayerNode {
+                NSNotificationCenter.defaultCenter().postNotificationName("EndGame", object: ammoNode.liniage)
+            }
             self.removeFromParent()
         }
     }

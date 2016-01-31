@@ -42,12 +42,6 @@ class GameScene: SKScene {
         initialCannonNode.cannonNodeDelegate = self
         addChild(initialCannonNode)
         
-        // Reset Btn
-        let resetNode = SKLabelNode(text: "Reset")
-        resetNode.position = CGPoint(x: 40, y: self.size.height - 40)
-        resetNode.zPosition = 100
-        addChild(resetNode)
-        
         // Tap to start Label
         tapNode = SKSpriteNode.init(imageNamed: "tapToStart")
         tapNode.position = CGPoint(x: self.size.width  / 2,
@@ -75,7 +69,7 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard let touch = touches.first else {
+        guard let _ = touches.first else {
             return
         }
         
@@ -83,17 +77,6 @@ class GameScene: SKScene {
             
             hasBegunGame = true
             startGame(true)
-        }
-        else {
-        
-            let point = touch.locationInNode(self)
-            for node in nodesAtPoint(point) {
-                
-                // Check if player tapped reset btn
-                if let _ = node as? SKLabelNode {
-                    resetGame()
-                }
-            }
         }
     }
    
