@@ -74,7 +74,6 @@ class GameScene: SKScene {
         }
         
         if (!hasBegunGame) {
-            
             hasBegunGame = true
             startGame(true)
         }
@@ -90,12 +89,8 @@ class GameScene: SKScene {
                     let cannonNodeA = CannonNode(withAmmo: false)
                     
                     var randomX = CGFloat(Double(arc4random() % 256) / 256.0)
-                    if randomX < 0.15 {
-                        randomX += 0.15
-                    }
-                    
-                    if randomX > 0.85 {
-                        randomX -= 0.15
+                    while randomX < 0.15 || randomX > 0.85 {
+                        randomX = CGFloat(Double(arc4random() % 256) / 256.0)
                     }
                     
                     cannonNodeA.position = CGPoint(x: self.size.width * randomX, y: self.size.height + 100)
@@ -121,6 +116,17 @@ class GameScene: SKScene {
                     if playerNode.position.y < 0 {
                         playerNode.removeFromParent()
                         NSNotificationCenter.defaultCenter().postNotificationName("EndGame", object: playerNode.liniage)
+                    }
+                }
+            } else {
+                for child in children {
+                    guard let child = child as? CannonNode
+                        else {
+                            continue
+                    }
+                    if child.ammoNode != nil && child.used == false && child.position.y < -70 {
+                        NSNotificationCenter.defaultCenter().postNotificationName("EndGame", object: nil)
+                        child.used = true
                     }
                 }
             }
