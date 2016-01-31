@@ -11,7 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     var lastDropTime:CFTimeInterval? = nil
-    var dropInterval = 1.3
+    var dropInterval = 1.7
     let resetGameInterval = 8.0
     var backgroundVelocity : CGFloat = 1.0
     
