@@ -11,7 +11,6 @@ import SpriteKit
 
 class EndOfGameVC: UIViewController {
     
-    @IBOutlet weak var frameSKView: SKView!
     @IBOutlet weak var cherubs: UIImageView!
     
     var cherubsOriginalY: CGFloat = 0
@@ -26,30 +25,30 @@ class EndOfGameVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        buildScene()
+//        buildScene()
         cherubsOriginalY = cherubs.frame.origin.y
         cherubs.frame.origin.y = self.view.frame.height
         
         print(textureArray)
     }
     
-    func buildScene() {
-        if let scene = FrameScene(fileNamed:"FrameScene") {
-            // Configure the view.
-            frameSKView.showsFPS = true
-            frameSKView.showsNodeCount = true
-            
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            frameSKView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            scene.textureArray = textureArray
-            
-            frameSKView.presentScene(scene)
-        }
-    }
+//    func buildScene() {
+//        if let scene = FrameScene(fileNamed:"FrameScene") {
+//            // Configure the view.
+//            frameSKView.showsFPS = true
+//            frameSKView.showsNodeCount = true
+//            
+//            /* Sprite Kit applies additional optimizations to improve rendering performance */
+//            frameSKView.ignoresSiblingOrder = true
+//            
+//            /* Set the scale mode to scale to fit the window */
+//            scene.scaleMode = .AspectFill
+//            
+//            scene.textureArray = textureArray
+//            
+//            frameSKView.presentScene(scene)
+//        }
+//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

@@ -17,7 +17,7 @@ class FrameScene: SKScene {
 //            else {
 //                return
 //        }
-//        
+//
 //        for texture in textureArray {
 //            guard let texture = object as? SKTexture
 //                else {
