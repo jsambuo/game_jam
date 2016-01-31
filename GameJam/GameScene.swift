@@ -15,6 +15,10 @@ class GameScene: SKScene {
     let resetGameInterval = 8.0
     var backgroundVelocity : CGFloat = 1.0
     
+    var initialCannonNode: CannonNode!
+    
+    var hasBegunGame = false
+    
     override func didMoveToView(view: SKView) {
         
         self.physicsWorld.gravity = CGVectorMake(0, -9.81)
@@ -28,8 +32,12 @@ class GameScene: SKScene {
         initializingScrollingBackground()
         
         // Cannon
-        let initialCannonNode = CannonNode(withAmmo: true)
+        initialCannonNode = CannonNode(withAmmo: true, hasBegunGame: false)
         initialCannonNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        initialCannonNode.removeAllActions()
+        initialCannonNode.rotateAction()
+        initialCannonNode.physicsBody?.dynamic = false
+        initialCannonNode.cannonNodeDelegate = self
         addChild(initialCannonNode)
         
         // Reset Btn
@@ -47,18 +55,25 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        guard let touch = touches.first
-            else {
-                return
+        guard let touch = touches.first else {
+            return
         }
         
-        let point = touch.locationInNode(self)
-        for node in nodesAtPoint(point) {
-            guard let _ = node as? SKLabelNode else {
-                continue
-            }
+        if (!hasBegunGame) {
             
-            resetGame()
+            hasBegunGame = true
+            startGame(true)
+        }
+        else {
+        
+            let point = touch.locationInNode(self)
+            for node in nodesAtPoint(point) {
+                
+                // Check if player tapped reset btn
+                if let _ = node as? SKLabelNode {
+                    resetGame()
+                }
+            }
         }
     }
    
@@ -66,46 +81,64 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
         self.moveBackground()
         
-        if let lastDropTime = self.lastDropTime {
-            if currentTime - lastDropTime > dropInterval {
-                let cannonNodeA = CannonNode(withAmmo: false)
+        if (hasBegunGame) {
+            if let lastDropTime = self.lastDropTime {
+                if currentTime - lastDropTime > dropInterval {
+                    let cannonNodeA = CannonNode(withAmmo: false)
+                    
+                    var randomX = CGFloat(Double(arc4random() % 256) / 256.0)
+                    if randomX < 0.15 {
+                        randomX += 0.15
+                    }
+                    
+                    if randomX > 0.85 {
+                        randomX -= 0.15
+                    }
+                    
+                    cannonNodeA.position = CGPoint(x: self.size.width * randomX, y: self.size.height + 100)
+                    addChild(cannonNodeA)
+                    
+                    self.lastDropTime = currentTime
+                }
+            }
+            else {
+                lastDropTime = currentTime
+            }
+            
+            if let playerNode = childNodeWithName("player") as? PlayerNode {
                 
-                var randomX = CGFloat(Double(arc4random() % 256) / 256.0)
-                if randomX < 0.15 {
-                    randomX += 0.15
+                // Update score label
+                if let scoreNode = childNodeWithName("score") as? SKLabelNode {
+                    let year = playerNode.curPlayer.curShotsInAge
+                    let generation = playerNode.curPlayer.generation
+                    scoreNode.text = "G: \(generation) Y: \(year)"
                 }
                 
-                if randomX > 0.85 {
-                    randomX -= 0.15
+                if playerNode.parent == self {
+                    if playerNode.position.y < 0 {
+                        playerNode.removeFromParent()
+                        NSNotificationCenter.defaultCenter().postNotificationName("EndGame", object: playerNode.liniage)
+                    }
                 }
-                
-                cannonNodeA.position = CGPoint(x: self.size.width * randomX, y: self.size.height + 100)
-                addChild(cannonNodeA)
-                
-                self.lastDropTime = currentTime
             }
         }
-        else {
-            lastDropTime = currentTime
+    }
+    
+    func startGame(shouldStartCannon: Bool) {
+        
+        self.hasBegunGame = true
+        
+        if (shouldStartCannon) {
+            
+            // Start dropping the cannon
+            initialCannonNode.hasBegunGame = true
+            initialCannonNode.physicsBody?.dynamic = true
+            initialCannonNode.moveToBottomAction()
         }
         
-        if let playerNode = childNodeWithName("player") as? PlayerNode {
-            
-            // Update score label
-            if let scoreNode = childNodeWithName("score") as? SKLabelNode {
-                let year = playerNode.curPlayer.curShotsInAge
-                let generation = playerNode.curPlayer.generation
-                scoreNode.text = "G: \(generation) Y: \(year)"
-                print(playerNode.liniage)
-            }
-            
-            if playerNode.parent == self {
-                if playerNode.position.y < 0 {
-                    playerNode.removeFromParent()
-                    NSNotificationCenter.defaultCenter().postNotificationName("EndGame", object: playerNode.liniage)
-                }
-            }
-        }
+        // Remove tap to start label
+        
+        
     }
     
     func initializingScrollingBackground() {
@@ -168,5 +201,13 @@ extension GameScene:SKPhysicsContactDelegate {
                 cannonNode.loadAmmo(projectileNode)
             }
         }
+    }
+}
+
+
+extension GameScene: CannonNodeDelegate {
+    
+    func cannonStartGame() {
+        startGame(false)
     }
 }
