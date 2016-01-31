@@ -8,6 +8,10 @@
 
 import SpriteKit
 
+protocol CannonNodeDelegate {
+    func cannonStartGame()
+}
+
 class CannonNode: SKSpriteNode {
 
     enum CannonType: Int {
@@ -21,9 +25,13 @@ class CannonNode: SKSpriteNode {
     
     var ammoNode:SKNode? = nil
     var used:Bool = false
+    var hasBegunGame = true
     
-    init(withAmmo:Bool) {
+    var cannonNodeDelegate: CannonNodeDelegate?
+    
+    init(withAmmo: Bool, hasBegunGame: Bool = true) {
         let size = CGSize(width: 100, height: 100)
+        self.hasBegunGame = hasBegunGame
         
         var cannonTexture = SKTexture(imageNamed: "birthcannon")
         switch (Int(arc4random_uniform(6))) {
@@ -77,8 +85,14 @@ class CannonNode: SKSpriteNode {
             loadAmmo(ammoNode)
         }
         
+        rotateAction()
+        moveToBottomAction()
+    }
+    
+    func rotateAction() {
+        
         let rotateLeftInitialAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 0.5)
-        runAction(rotateLeftInitialAction) { 
+        runAction(rotateLeftInitialAction) {
             let rotateLeftAction = SKAction.rotateToAngle(CGFloat(M_PI_4), duration: 1)
             let rotateRightAction = SKAction.rotateToAngle(-CGFloat(M_PI_4), duration: 1)
             let rotateArray = SKAction.sequence([rotateRightAction, rotateLeftAction])
@@ -86,6 +100,9 @@ class CannonNode: SKSpriteNode {
             
             self.runAction(repeatAction)
         }
+    }
+    
+    func moveToBottomAction() {
         
         let moveToBottomAction = SKAction.moveToY(-200, duration: 8)
         
@@ -99,7 +116,16 @@ class CannonNode: SKSpriteNode {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        shootNode()
+        if (hasBegunGame) {
+            shootNode()
+        }
+        else {
+            hasBegunGame = true
+            physicsBody?.dynamic = true
+            moveToBottomAction()
+            
+            self.cannonNodeDelegate?.cannonStartGame()
+        }
     }
     
     func shootNode() {
