@@ -17,7 +17,7 @@ class EndOfGameVC: UIViewController {
     var cherubsOriginalY: CGFloat = 0
     var shouldFloat = true
     
-    var textureArray:AnyObject?
+    var textureArray:[SKTexture]?
     
     override func prefersStatusBarHidden() -> Bool {
         return true

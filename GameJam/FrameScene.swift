@@ -10,23 +10,23 @@ import SpriteKit
 
 class FrameScene: SKScene {
     
-    var textureArray:AnyObject?
+    var textureArray:[SKTexture]?
     
     override func didMoveToView(view: SKView) {
-//        guard let textureArray = textureArray as?  Array<SKTexture?>
+//        guard let textureArray = textureArray as?  [SKTexture]
 //            else {
 //                return
 //        }
-        
-        for object in textureArray as! Array<AnyObject> {
-            guard let texture = object as? SKTexture
-                else {
-                    return
-            }
-            let textureNode = SKSpriteNode(texture: texture)
-            textureNode.size = CGSize(width: 50, height: 50)
-            textureNode.position = CGPoint(x: 50, y: 50)
-            addChild(textureNode)
-        }
+//        
+//        for texture in textureArray {
+//            guard let texture = object as? SKTexture
+//                else {
+//                    return
+//            }
+//            let textureNode = SKSpriteNode(texture: texture)
+//            textureNode.size = CGSize(width: 50, height: 50)
+//            textureNode.position = CGPoint(x: 50, y: 50)
+//            addChild(textureNode)
+//        }
     }
 }

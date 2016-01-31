@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     
-    var textureArray:AnyObject?
+    var textureArray:[SKTexture]?
     @IBOutlet weak var soundBtn: UIButton!
     
     override func viewDidLoad() {
@@ -64,7 +64,7 @@ class GameViewController: UIViewController {
     }
     
     func endGame(notification:NSNotification?) {
-        textureArray = notification?.object
+        textureArray = notification?.object as? [SKTexture]
         performSegueWithIdentifier("endGamePopoverIdentifier", sender: self)
     }
     
