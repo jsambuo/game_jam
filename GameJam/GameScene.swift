@@ -62,6 +62,8 @@ class GameScene: SKScene {
         
         // Score Label
         let scoreNode = SKLabelNode(text: "G: 1 Y: 1")
+        scoreNode.fontColor = UIColor.darkGrayColor()
+        scoreNode.fontSize = 40.0
         scoreNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 40)
         scoreNode.zPosition = 100
         scoreNode.name = "score"
